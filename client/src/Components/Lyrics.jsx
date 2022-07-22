@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class Lyrics extends React.Component {
   constructor (props) {
@@ -10,7 +11,36 @@ class Lyrics extends React.Component {
     this.save = this.save.bind(this);
   }
 
-  save (q) {
+  save () {
+
+    var options = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    axios.post('/save', {
+      name: this.state.info.track_name,
+      artist: this.state.info.artist_name,
+      album: this.state.info.album_name,
+      lyrics: this.state.lyrics
+    }, options).then((res) => {
+      console.log('The post request to /save was succesful, and this is the response: ', res);
+    }).catch((err) => {
+      console.log(err)
+    }).then(() => {
+
+    })
+
+    // axios.post('/save', {
+    //   name: this.state.info.track_name,
+    //   artist: this.state.info.artist_name,
+    //   album: this.state.info.album_name,
+    //   lyrics: this.state.lyrics
+    // }, options).then((res) => {
+    //   console.log('The post request to /save was succesful, and this is the response: ', res);
+    // }).catch((err) => {
+    //   console.log(err)
+    // })
 
   }
 
@@ -20,7 +50,7 @@ class Lyrics extends React.Component {
         <h3> Lyrics: </h3>
         <h5>{this.state.info.track_name}</h5>
         <h6>{this.state.info.artist_name}</h6>
-        <button>Save</button>
+        <button onClick={this.save}>Save</button>
         <div>{this.state.lyrics}</div>
       </div>
     )
