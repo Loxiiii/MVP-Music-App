@@ -34,6 +34,7 @@ class TopResults extends React.Component {
     })
   }
 
+
   render () {
     return (
       <div>
@@ -42,7 +43,7 @@ class TopResults extends React.Component {
             return (
               <div>
                 <div>{index+1}</div>
-                <Result track={num.track} />
+                <Result track={num.track} onSelect={this.props.onSelect} />
               </div>
             )
           })
@@ -50,6 +51,17 @@ class TopResults extends React.Component {
       </div>
     )
   }
+
+  componentDidUpdate(prevProps) {
+    console.log('These are the previous props: ', prevProps)
+    if (this.props.results !== prevProps.results) {
+      console.log('This is rendering from the TopResult component: ', this.props.results);
+      this.setState({
+        top: this.props.results
+      })
+    }
+  }
+
 }
 
 export default TopResults;
