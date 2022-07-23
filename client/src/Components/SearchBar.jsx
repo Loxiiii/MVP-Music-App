@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
   render () {
 
     return (
-      <div>
+      <div className='searchbar'>
         {/* <form>
           <label>Song: <input></input></label>
           <br></br>

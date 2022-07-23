@@ -37,13 +37,13 @@ class TopResults extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='topresults'>
         {
           this.state.top.map((num, index) => {
             return (
-              <div>
+              <div className='result'>
                 <div>{index+1}</div>
-                <Result track={num.track} onSelect={this.props.onSelect} />
+                <Result className='result' track={num.track} onSelect={this.props.onSelect} />
               </div>
             )
           })

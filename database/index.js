@@ -6,10 +6,11 @@ mongoose.connect('mongodb://localhost/mvp')
   });
 
 let favoriteSchema = mongoose.Schema({
-  title: String,
-  artist: String,
-  album: String,
-  lyrics: String
+  track_name: String,
+  artist_name: String,
+  album_name: String,
+  track_id: Number,
+  // lyrics: String
 });
 
 let Favorite = mongoose.model('Favorite', favoriteSchema);

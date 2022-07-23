@@ -1,0 +1,28 @@
+body {
+  color: rgb(215, 115, 115);
+  background-color: black;
+}
+
+.container {
+  display: flex
+}
+
+.result {
+  border: solid 2px rgb(215, 115, 115)
+
+}
+
+.topresults {
+  border: solid 2px rgb(215, 115, 115);
+  margin-right: 10px
+}
+
+.favorites {
+  border: solid 2px rgb(215, 115, 115);
+  margin-right: 10px
+}
+
+.searchbar {
+  margin-bottom: 30px
+}
+

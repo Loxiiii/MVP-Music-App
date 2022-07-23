@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOMClient from 'react-dom/client';
-import SearchBar from './Components/SearchBar.jsx'
-import TopResults from './Components/TopResults.jsx'
-import Lyrics from './Components/Lyrics.jsx'
-import Favorites from './Components/Favorites.jsx'
+import SearchBar from './Components/SearchBar.jsx';
+import TopResults from './Components/TopResults.jsx';
+import Lyrics from './Components/Lyrics.jsx';
+import Favorites from './Components/Favorites.jsx';
 import axios from 'axios';
-import MUSIC_MATCH_KEY from '../../config.js'
+import MUSIC_MATCH_KEY from '../../config.js';
+import "./styles.css";
 
 const searchTracksURL = 'https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?'
 const selectTrackURL = 'https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?'
@@ -83,9 +84,9 @@ class App extends React.Component {
       <div>
         <h1> Lyric.ly </h1>
         <SearchBar onSearch={this.search}/>
-        <div>
-          <Favorites />
+        <div className='container'>
           <TopResults results={this.state.results} onSelect={this.select}/>
+          <Favorites onSelect={this.select}/>
         </div>
         <Lyrics lyric={this.state.lyrics} info={this.state.selected} />
       </div>

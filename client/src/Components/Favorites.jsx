@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import Result from './Result.jsx'
 
 class Favorites extends React.Component {
   constructor (props) {
@@ -10,15 +12,41 @@ class Favorites extends React.Component {
   }
 
   load () {
+    setInterval(() => {
+      axios.get('/favs').then((favs) => {
+
+        console.log('these are the favorites: ', favs);
+        this.setState({
+          favorites: favs.data
+        })
+
+      })
+    }, 2000)
+
+    // axios.get('/favs').then((favs) => {
+
+    //   console.log('these are the favorites: ', favs);
+    //   this.setState({
+    //     favorites: favs.data
+    //   })
+
+    // })
+
 
   }
 
-
+  componentDidMount() {
+    this.load();
+  }
 
   render () {
     return (
-      <div>
-        <div>Hello this is the saved list!</div>
+      <div className='favorites'>
+        {this.state.favorites.map((fav) => {
+          return (
+            <Result track={fav} onSelect={this.props.onSelect}/>
+          )
+        })}
       </div>
     )
   }

@@ -22,6 +22,7 @@ class Lyrics extends React.Component {
       name: this.state.info.track_name,
       artist: this.state.info.artist_name,
       album: this.state.info.album_name,
+      track_id: this.state.info.track_id,
       lyrics: this.state.lyrics
     }, options).then((res) => {
       console.log('The post request to /save was succesful, and this is the response: ', res);
